@@ -1,8 +1,8 @@
 "use strict";
 const fs = require("fs");
 const sizeOf = require('image-size');
-const path = "photos";
-const output = "../themes/hexo-theme-next-master/source/album/photoslist.json";
+const path = "pics";
+const output = "/blog/album/photoslist.json";
 var dimensions;
 fs.readdir(path, function (err, files) {
     if (err) {
