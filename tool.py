@@ -136,7 +136,7 @@ def handle_photo():
         json.dump(final_dict, fp)
 
 def generateJson():
-    os.system('node blogAlbum/tool.js')
+    os.system('node tool.js')
 
 def cut_photo():
     """裁剪算法
@@ -170,7 +170,6 @@ def git_operation():
     ----------
     需要安装git命令行工具，并且添加到环境变量中
     '''
-    os.system('cd blogAlbum')
     os.system('git add --all')
     os.system('git commit -m "add photos"')
     os.system('git push origin master')
