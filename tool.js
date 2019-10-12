@@ -1,11 +1,12 @@
 "use strict";
 const fs = require("fs");
 const sizeOf = require('image-size');
-const path = "pics";
-const output = "/blog/album/photoslist.json";
+const path = "blogAlbum/photos";
+const output = "public/blog/album/photoslist.json";
 var dimensions;
 fs.readdir(path, function (err, files) {
     if (err) {
+        console.error('err', err);
         return;
     }
     let arr = [];
