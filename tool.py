@@ -73,15 +73,15 @@ def compress_photo():
     '''调用压缩图片的函数
     '''
     src_dir, des_dir = "photos/", "min_photos/"
-    
+    file_list_src, file_list_des = [], []
     if directory_exists(src_dir):
-        if not directory_exists(src_dir):
-            make_directory(src_dir)
+        # if not directory_exists(src_dir):
+        #     make_directory(src_dir)
         # business logic
         file_list_src = list_img_file(src_dir)
     if directory_exists(des_dir):
-        if not directory_exists(des_dir):
-            make_directory(des_dir)
+        # if not directory_exists(des_dir):
+        #     make_directory(des_dir)
         file_list_des = list_img_file(des_dir)
         # print file_list
     '''如果已经压缩了，就不再压缩'''
@@ -135,6 +135,9 @@ def handle_photo():
     with open("../themes/hexo-theme-next-master/source/album/data.json","w") as fp:
         json.dump(final_dict, fp)
 
+def generateJson():
+    os.system('node blogAlbum/tool.js')
+
 def cut_photo():
     """裁剪算法
     
@@ -167,6 +170,7 @@ def git_operation():
     ----------
     需要安装git命令行工具，并且添加到环境变量中
     '''
+    os.system('cd blogAlbum')
     os.system('git add --all')
     os.system('git commit -m "add photos"')
     os.system('git push origin master')
@@ -209,6 +213,7 @@ if __name__ == "__main__":
     # cut_photo()        # 裁剪图片，裁剪成正方形，取中间部分
     compress_photo()   # 压缩图片，并保存到mini_photos文件夹下
     git_operation()    # 提交到github仓库
-    handle_photo()     # 将文件处理成json格式，存到博客仓库中
+    # handle_photo()     # 将文件处理成json格式，存到博客仓库中
+    generateJson()
    
     
