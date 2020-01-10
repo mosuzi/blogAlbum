@@ -2,7 +2,7 @@
 const fs = require("fs");
 const sizeOf = require('image-size');
 const path = "blogAlbum/photos";
-const output = "themes/hexo-themes-next-master/source/album/photoslist.json";
+const output = "themes/hexo-theme-next-master/source/album/photoslist.json";
 var dimensions;
 fs.readdir(path, function (err, files) {
     if (err) {
