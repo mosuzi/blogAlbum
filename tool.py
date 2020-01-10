@@ -55,19 +55,20 @@ def compress(choose, des_dir, src_dir, file_list):
     choose: str
             选择压缩的比例，有4个选项，越大压缩后的图片越小
     """
-    if choose == '1':
-        scale = SIZE_normal
-    if choose == '2':
-        scale = SIZE_small
-    if choose == '3':
-        scale = SIZE_more_small
-    if choose == '4':
-        scale = SIZE_more_small_small
+    # if choose == '1':
+    #     scale = SIZE_normal
+    # if choose == '2':
+    #     scale = SIZE_small
+    # if choose == '3':
+    #     scale = SIZE_more_small
+    # if choose == '4':
+    #     scale = SIZE_more_small_small
     for infile in file_list:
         img = Image.open(src_dir+infile)
         # size_of_file = os.path.getsize(infile)
         w, h = img.size
-        img.thumbnail((int(w/scale), int(h/scale)))
+        scale = 1 if w <= 600 else w / 600
+        img.thumbnail((600, h // scale))
         img.save(des_dir + infile)
 def compress_photo():
     '''调用压缩图片的函数
